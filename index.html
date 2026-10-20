@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0c12">
+  <meta name="description" content="MyMe Control Center — bảng điều khiển bot Discord MyMe Ticket.">
+  <title>MyMe Control Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./config.js"></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="./" aria-label="MyMe Control Center">
+        <span class="brand-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 29V11h5l7 10 7-10h5v18h-5V19l-7 9-7-9v10z" fill="currentColor"/><circle cx="32" cy="9" r="3" fill="#94f4d4"/></svg></span>
+        <span class="brand-copy"><strong>MYME<span>.</span></strong><small>CONTROL CENTER</small></span>
+      </a>
+      <div class="workspace-label">WORKSPACE</div>
+      <div class="server-picker-wrap"><label for="serverSelect">DISCORD SERVER</label><div class="select-shell"><span class="server-glyph">◈</span><select id="serverSelect" disabled><option>Đang tải server...</option></select><span class="select-chevron">⌄</span></div></div>
+      <nav class="side-nav" aria-label="Điều hướng chính">
+        <a class="nav-link active" href="#overview"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg></span><span>Tổng quan</span><span class="nav-arrow">↗</span></a>
+        <a class="nav-link" href="#tickets"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 7.5A2.5 2.5 0 0 1 6.5 5H20v14H6.5A2.5 2.5 0 0 1 4 16.5z"/><path d="M4 8h16M8 11h7M8 14h5"/></svg></span><span>Quản lý ticket</span><span class="nav-count" id="navTicketCount">—</span></a>
+        <a class="nav-link" href="#settings"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.2 1-1.8 3.1-1.5-.6a7.7 7.7 0 0 1-1.7 1l-.2 1.6h-3.6l-.2-1.6a7.7 7.7 0 0 1-1.7-1l-1.5.6-1.8-3.1 1.2-1a7.4 7.4 0 0 1 0-2l-1.2-1 1.8-3.1 1.5.6a7.7 7.7 0 0 1 1.7-1l.2-1.6h3.6l.2 1.6a7.7 7.7 0 0 1 1.7 1l1.5-.6 1.8 3.1-1.2 1a7.4 7.4 0 0 1 0 2Z"/></svg></span><span>Cấu hình bot</span></a>
+      </nav>
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-health"><div class="health-orb"><span></span></div><div class="health-copy"><strong id="sidebarHealthTitle">Đang kết nối...</strong><small id="sidebarHealthText">Kiểm tra trạng thái bot</small></div><span class="health-pulse"></span></div>
+      <div class="sidebar-bottom"><div class="secure-line"><span class="secure-icon">✦</span><span>Private admin workspace</span></div><div class="sidebar-version">MYME TICKET <span>ADVANCED</span></div></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mini">M</span><strong>MYME<span>.</span></strong></div>
+        <div class="breadcrumb"><span>Workspace</span><span class="crumb-sep">/</span><strong id="breadcrumbTitle">Tổng quan</strong></div>
+        <div class="topbar-actions"><span class="bot-status" id="botStatus"><i></i>Đang kiểm tra bot</span><div class="account-area" id="accountArea" hidden><img id="userAvatar" alt="Avatar Discord" src="./avatar-fallback.svg"><span id="userName">Admin</span><button class="icon-button" id="logoutBtn" type="button" title="Đăng xuất" aria-label="Đăng xuất">↗</button></div><a class="button button-primary button-small" id="loginBtn" href="/auth/login" hidden>Đăng nhập Discord <span>↗</span></a></div>
+      </header>
+
+      <section class="login-view" id="loginView" hidden>
+        <div class="login-copy"><div class="eyebrow"><span class="eyebrow-dot"></span> MYME TICKET SYSTEM · ADVANCED</div><h1>Mọi thứ của bot.<br><span>Trong tầm tay.</span></h1><p class="login-description">Một không gian điều khiển gọn gàng để quản lý ticket, theo dõi hoạt động và cấu hình bot Discord của bạn.</p><a class="button button-primary button-large" href="/auth/login" id="loginHeroBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.7 5.3a18 18 0 0 0-4.4-1.4l-.5 1a16 16 0 0 0-5.6 0l-.5-1a18 18 0 0 0-4.4 1.4C1.5 9.4.7 13.4 1.1 17.3a18 18 0 0 0 5.4 2.7l1.2-2a11 11 0 0 1-1.9-.9l.5-.4a12.8 12.8 0 0 0 11.4 0l.5.4a11 11 0 0 1-1.9.9l1.2 2a18 18 0 0 0 5.4-2.7c.5-4.6-.8-8.5-3.2-12zM8.7 14.7c-1.1 0-2-1-2-2.2s.9-2.2 2-2.2 2 1 2 2.2-.9 2.2-2 2.2zm6.6 0c-1.1 0-2-1-2-2.2s.9-2.2 2-2.2 2 1 2 2.2-.9 2.2-2 2.2z"/></svg> Tiếp tục với Discord <span>→</span></a><div class="login-trust"><span class="trust-check">✓</span><span>Đăng nhập an toàn · Chỉ quản trị viên được cấp quyền</span></div><p class="setup-warning" id="oauthWarning" hidden><strong>Dashboard chưa kết nối.</strong><br>Hãy cấu hình URL backend trong <code>config.js</code>, sau đó thiết lập OAuth2 trong `.env` của bot.</p><div class="login-error" id="connectionHint" hidden></div></div>
+        <div class="login-visual"><div class="visual-top"><span class="visual-live"><i></i> LIVE CONTROL</span><span class="visual-dots"><i></i><i></i><i></i></span></div><div class="visual-title"><span>WORKSPACE PREVIEW</span><strong>Control your<br>community.</strong></div><div class="preview-metric-row"><div class="preview-metric"><span>OPEN TICKETS</span><strong>24</strong><small><i>↗</i> Support queue</small></div><div class="preview-metric"><span>RESOLVED</span><strong>128</strong><small>+12 this week</small></div></div><div class="preview-chart"><div class="chart-heading"><span>Ticket activity</span><span>THIS WEEK</span></div><div class="chart-bars"><i style="height:35%"></i><i style="height:52%"></i><i style="height:42%"></i><i style="height:72%"></i><i style="height:58%"></i><i style="height:88%"></i><i style="height:68%"></i><i style="height:100%"></i><i style="height:76%"></i><i style="height:90%"></i><i style="height:63%"></i><i style="height:79%"></i></div><div class="chart-days"><span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span><span>CN</span></div></div><div class="preview-bottom"><div class="preview-avatar-stack"><b>M</b><b>✦</b><b>+</b></div><span>Built for your community</span><span class="preview-spark">✳</span></div><div class="visual-glow"></div></div>
+      </section>
+
+      <section id="dashboardView" hidden>
+        <div class="page-heading" id="overview"><div><div class="eyebrow"><span class="eyebrow-dot"></span> WORKSPACE / OVERVIEW</div><h1>Chào mừng trở lại<span class="heading-period">.</span></h1><p class="subheading">Đây là tình hình hoạt động của MyMe Ticket Bot hôm nay.</p></div><button class="button button-secondary" id="refreshBtn" type="button"><span class="refresh-icon">↻</span> Làm mới dữ liệu</button></div>
+        <div class="notice" id="serverNotice" hidden></div>
+        <div class="stats-grid" id="statsGrid">
+          <article class="stat-card stat-purple"><div class="stat-top"><span>Tổng ticket</span><span class="stat-icon"><svg viewBox="0 0 24 24"><path d="M5 5h14v14H5z"/><path d="M8 9h8M8 12h5M8 15h7"/></svg></span></div><div class="stat-number" id="statTotal">—</div><div class="stat-foot"><span class="tiny-spark">✳</span> Tổng yêu cầu đã ghi nhận</div><div class="stat-decoration"></div></article>
+          <article class="stat-card stat-blue"><div class="stat-top"><span>Đang mở</span><span class="stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></span></div><div class="stat-number" id="statOpen">—</div><div class="stat-foot"><span class="status-dot open"></span> Cần theo dõi</div><div class="stat-decoration"></div></article>
+          <article class="stat-card stat-green"><div class="stat-top"><span>Đã đóng</span><span class="stat-icon"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></span></div><div class="stat-number" id="statClosed">—</div><div class="stat-foot"><span class="tiny-check">✓</span> Đã xử lý xong</div><div class="stat-decoration"></div></article>
+          <article class="stat-card stat-amber"><div class="stat-top"><span>Đã đánh giá</span><span class="stat-icon"><svg viewBox="0 0 24 24"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></span></div><div class="stat-number" id="statRated">—</div><div class="stat-foot"><span class="tiny-star">★</span> Phản hồi cộng đồng</div><div class="stat-decoration"></div></article>
+        </div>
+
+        <section class="panel" id="tickets"><div class="panel-heading"><div><div class="eyebrow">SUPPORT OPERATIONS</div><h2>Ticket gần đây</h2><p>Theo dõi yêu cầu và thao tác nhanh mà không cần tìm trong server.</p></div><span class="counter-pill" id="ticketCount">0 ticket</span></div><div class="table-toolbar"><div class="filter-tabs" role="group" aria-label="Lọc ticket"><button class="filter-tab active" type="button" data-filter="all">Tất cả</button><button class="filter-tab" type="button" data-filter="open">Đang mở</button><button class="filter-tab" type="button" data-filter="closed">Đã đóng</button></div><label class="search-wrap"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="ticketSearch" type="search" placeholder="Tìm ticket, người tạo..." aria-label="Tìm ticket hoặc người tạo"></label></div><div class="table-wrap"><table><thead><tr><th>TICKET</th><th>NGƯỜI TẠO</th><th>LOẠI</th><th>TRẠNG THÁI</th><th>ĐÁNH GIÁ</th><th>NGÀY TẠO</th><th>THAO TÁC</th></tr></thead><tbody id="ticketsBody"><tr><td colspan="7" class="empty-cell">Đang tải dữ liệu...</td></tr></tbody></table></div><div class="panel-footer"><span id="tableSummary">Chưa có dữ liệu</span><span><span class="footer-status"></span> Dữ liệu từ bot đang chạy</span></div></section>
+
+        <section class="panel settings-panel" id="settings"><div class="panel-heading"><div><div class="eyebrow">SERVER CONFIGURATION</div><h2>Cấu hình bot</h2><p>Điều chỉnh các vai trò, kênh và giao diện bảng tiếp nhận ticket.</p></div><span class="setting-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.2 1-1.8 3.1-1.5-.6a7.7 7.7 0 0 1-1.7 1l-.2 1.6h-3.6l-.2-1.6a7.7 7.7 0 0 1-1.7-1l-1.5.6-1.8-3.1 1.2-1a7.4 7.4 0 0 1 0-2l-1.2-1 1.8-3.1 1.5.6a7.7 7.7 0 0 1 1.7-1l.2-1.6h3.6l.2 1.6a7.7 7.7 0 0 1 1.7 1l1.5-.6 1.8 3.1-1.2 1a7.4 7.4 0 0 1 0 2Z"/></svg></span></div>
+          <form id="configForm"><div class="settings-section-title"><span class="section-number">01</span><div><strong>Discord server</strong><small>Thông tin định tuyến của bot trong server đã chọn.</small></div></div><div class="settings-grid"><label class="field"><span>STAFF ROLE ID</span><input id="staffRoleId" name="staffRoleId" inputmode="numeric" placeholder="Ví dụ: 123456789012345678"><small>Vai trò được hỗ trợ xử lý ticket.</small></label><label class="field"><span>LOGS CHANNEL ID</span><input id="logsChannelId" name="logsChannelId" inputmode="numeric" placeholder="ID kênh nhật ký"><small>Nơi lưu logs và transcript.</small></label><label class="field field-wide"><span>TICKET CATEGORY ID</span><input id="categoryId" name="categoryId" inputmode="numeric" placeholder="ID danh mục chứa kênh ticket"><small>Danh mục Discord dùng cho ticket mới.</small></label></div><div class="settings-divider"></div><div class="settings-section-title"><span class="section-number">02</span><div><strong>Giao diện bảng ticket</strong><small>Tùy chỉnh nội dung hiển thị cho thành viên.</small></div></div><div class="settings-grid"><label class="field field-wide"><span>TIÊU ĐỀ BẢNG TICKET</span><input id="panelTitle" name="panelTitle" maxlength="100" placeholder="MyMe Support Center"><small>Tiêu đề được dùng khi tạo bảng mới.</small></label><label class="field field-wide"><span>MÔ TẢ</span><textarea id="panelDescription" name="panelDescription" rows="3" maxlength="1000" placeholder="Mô tả cách thành viên gửi yêu cầu hỗ trợ..."></textarea><small>Tối đa 1000 ký tự.</small></label><label class="field field-wide"><span>BIG IMAGE URL <span class="field-optional">· KHÔNG BẮT BUỘC</span></span><input id="panelImageUrl" name="panelImageUrl" type="url" maxlength="500" placeholder="https://.../myme-banner.png"><small>Đường dẫn HTTPS trực tiếp tới ảnh banner. Sau khi lưu, dùng /ticket-panel để gửi bảng mới.</small></label></div><div class="form-actions"><span id="configMessage" role="status"></span><button class="button button-primary" id="saveConfigBtn" type="submit">Lưu thay đổi <span>→</span></button></div></form>
+        </section>
+        <footer class="page-footer"><span><strong>MYME<span>.</span></strong> CONTROL CENTER</span><span>Secure workspace <i></i> Discord OAuth2</span></footer>
+      </section>
+      <div class="global-error" id="globalError" role="alert" hidden></div>
+    </main>
+  </div>
+</body>
+</html>
